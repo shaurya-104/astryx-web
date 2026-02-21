@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* === MOBILE OVERFLOW FIX (iOS SAFARI) === */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

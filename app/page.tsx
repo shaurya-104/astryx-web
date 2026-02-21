@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* HERO */}
-      <section className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
+    <main className="min-h-screen bg-black text-white">
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
 
         {/* TITLE */}
         <motion.h1
@@ -16,11 +15,23 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="
             font-bold uppercase
-            text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
-            tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em]
             leading-none
+            select-none
+
+            /* FONT SIZE */
+            text-[3rem]
+            sm:text-[4.5rem]
+            md:text-[6rem]
+            lg:text-[8rem]
+
+            /* SAFE LETTER SPACING */
+            tracking-[0.15em]
+            sm:tracking-[0.25em]
+            md:tracking-[0.35em]
+
+            /* CRITICAL FIX */
             max-w-full
-            break-words
+            whitespace-nowrap
           "
         >
           ASTRYX
@@ -64,9 +75,10 @@ export default function HomePage() {
               transition-all
             "
           >
-            Join a Team
+            Join us
           </Link>
         </motion.div>
+
       </section>
     </main>
   );
