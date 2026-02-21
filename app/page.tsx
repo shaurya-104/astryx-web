@@ -64,37 +64,49 @@ const AstryxSplit = () => {
   const [merged, setMerged] = useState(false);
 
   return (
-    <div className="relative flex items-center justify-center font-bold uppercase select-none leading-none tracking-[0.35em]
-      text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]"
+    <div
+      className="
+        relative flex items-center justify-center
+        font-bold uppercase select-none leading-none
+        tracking-[0.35em]
+        text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
+      "
     >
-      {/* AST from left */}
+      {/* AST (near-left) */}
       <motion.span
-        initial={{ x: "-120vw", opacity: 0 }}
+        initial={{ x: -60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         onAnimationComplete={() => setMerged(true)}
         className="relative z-10"
       >
         AST
       </motion.span>
 
-      {/* RYX from right */}
+      {/* RYX (near-right) */}
       <motion.span
-        initial={{ x: "120vw", opacity: 0 }}
+        initial={{ x: 60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative z-10"
       >
         RYX
       </motion.span>
 
-      {/* Distortion ONLY AFTER merge */}
+      {/* Subtle distortion AFTER merge */}
       {merged && (
         <motion.span
           aria-hidden
-          className="absolute inset-0 text-white/40"
-          animate={{ x: [0, -2, 2, 0], y: [0, 1, -1, 0] }}
-          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 text-white/35"
+          animate={{
+            x: [0, -1.5, 1.5, 0],
+            y: [0, 1, -1, 0],
+          }}
+          transition={{
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         >
           ASTRYX
         </motion.span>
