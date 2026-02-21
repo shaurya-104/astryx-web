@@ -2,17 +2,81 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+/* ---------------- BURGER MENU ---------------- */
+
+const BurgerMenu = () => {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={menuRef} className="relative">
+      {/* Burger Button */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="relative w-8 h-6"
+        aria-label="Toggle menu"
+      >
+        <motion.span
+          animate={{
+            rotate: open ? 45 : 0,
+            y: open ? 8 : 0,
+          }}
+          className="absolute top-0 left-0 w-full h-[2px] bg-white"
+        />
+        <motion.span
+          animate={{
+            opacity: open ? 0 : 1,
+          }}
+          className="absolute top-1/2 left-0 w-full h-[2px] bg-white -translate-y-1/2"
+        />
+        <motion.span
+          animate={{
+            rotate: open ? -45 : 0,
+            y: open ? -8 : 0,
+          }}
+          className="absolute bottom-0 left-0 w-full h-[2px] bg-white"
+        />
+      </button>
+
+      {/* Dropdown Menu */}
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          className="absolute right-0 mt-4 w-48 rounded-xl border border-white/20 bg-black p-4 flex flex-col gap-3 z-50"
+        >
+          <Link href="/learn" onClick={() => setOpen(false)}>Learn</Link>
+          <Link href="/teams" onClick={() => setOpen(false)}>Teams</Link>
+          <Link href="/projects" onClick={() => setOpen(false)}>Projects</Link>
+          <Link href="/hackathons" onClick={() => setOpen(false)}>Hackathons</Link>
+        </motion.div>
+      )}
+    </div>
+  );
+};
 
 /* ---------------- DISTORTED ASTRYX ---------------- */
 
-const DistortedAstryx = ({ onDone }: { onDone: () => void }) => {
+const DistortedAstryx = () => {
   return (
     <motion.h1
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
-      onAnimationComplete={onDone}
       className="
         relative font-bold uppercase select-none leading-none
         text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
@@ -22,7 +86,7 @@ const DistortedAstryx = ({ onDone }: { onDone: () => void }) => {
     >
       <span className="relative z-10">ASTRYX</span>
 
-      {/* subtle distortion */}
+      {/* subtle ongoing distortion */}
       <motion.span
         aria-hidden
         className="absolute inset-0 text-white/50"
@@ -47,45 +111,20 @@ const DistortedAstryx = ({ onDone }: { onDone: () => void }) => {
 /* ---------------- PAGE ---------------- */
 
 export default function HomePage() {
-  const [navVisible, setNavVisible] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <main className="min-h-screen bg-black text-white">
 
-      {/* ================= NAVBAR ================= */}
-      {navVisible && (
-        <motion.nav
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between bg-black"
-        >
-          <Link href="/" className="font-semibold">
-            ASTRYX
-          </Link>
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white/70 hover:text-white"
-          >
-            Menu
-          </button>
-
-          {menuOpen && (
-            <div className="absolute right-6 top-16 bg-black border border-white/20 rounded-xl p-4 flex flex-col gap-3">
-              <Link href="/learn">Learn</Link>
-              <Link href="/teams">Teams</Link>
-              <Link href="/projects">Projects</Link>
-              <Link href="/hackathons">Hackathons</Link>
-            </div>
-          )}
-        </motion.nav>
-      )}
+      {/* ================= TOP NAV ================= */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="font-semibold text-white">
+          ASTRYX
+        </Link>
+        <BurgerMenu />
+      </nav>
 
       {/* ================= HERO ================= */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
-        <DistortedAstryx onDone={() => setNavVisible(true)} />
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-24 text-center overflow-hidden">
+        <DistortedAstryx />
 
         <p className="mt-6 text-sm sm:text-base text-white/70">
           Learn · Build · Compete
@@ -121,7 +160,8 @@ export default function HomePage() {
         </h2>
 
         <p className="text-white/70 max-w-xl mx-auto mb-10">
-          Join our community, collaborate with builders, and grow with ASTRYX.
+          Join our community, collaborate with like-minded builders,
+          and take part in events, teams, and challenges.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
