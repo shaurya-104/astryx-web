@@ -131,7 +131,7 @@ export default function HomePage() {
           </Link>
 
           <Link href="/teams" style={filledButton}>
-            Join a Team
+            Join us
           </Link>
         </div>
       </section>
