@@ -20,17 +20,19 @@ const AnimatedAstryx = () => {
       style={{
         maxWidth: "100%",
         overflow: "hidden",
-        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          flexWrap: "wrap",
+          maxWidth: "90vw", // ✅ CRITICAL for iOS
+          overflow: "hidden",
           fontWeight: 700,
-          letterSpacing: "0.25em",
-          fontSize: "clamp(42px, 12vw, 96px)", // ✅ responsive
+          letterSpacing: "0.22em",
+          fontSize: "clamp(42px, 11vw, 96px)",
         }}
       >
         {letters.map((letter, index) => {

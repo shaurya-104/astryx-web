@@ -10,15 +10,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ iOS viewport + safe-area support */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </head>
+
       <body
         style={{
           margin: 0,
           background: "black",
           color: "white",
-          minHeight: "100vh",
+          minHeight: "100dvh", // ✅ fixes iOS 100vh bug
           display: "flex",
           flexDirection: "column",
-          overflowX: "hidden", // ✅ fixes mobile horizontal cut
+          overflowX: "hidden", // ✅ hard stop for iOS overflow
         }}
       >
         <ClickSpark>
@@ -27,12 +35,14 @@ export default function RootLayout({
             style={{
               position: "fixed",
               top: 0,
-              width: "100%",
+              left: 0,
+              right: 0,
               zIndex: 100,
-              padding: "20px",
+              padding: "16px",
+              paddingTop: "calc(16px + env(safe-area-inset-top))", // ✅ notch fix
               borderBottom: "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(10px)",
-              background: "rgba(0,0,0,0.6)",
+              backdropFilter: "blur(12px)",
+              background: "rgba(0,0,0,0.7)",
             }}
           >
             <nav
@@ -44,7 +54,6 @@ export default function RootLayout({
                 alignItems: "center",
               }}
             >
-              {/* LOGO */}
               <Link
                 href="/"
                 style={{
@@ -57,26 +66,16 @@ export default function RootLayout({
                 ASTRYX
               </Link>
 
-              {/* NAV LINKS */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  flexWrap: "wrap",
-                }}
-              >
+              <div style={{ display: "flex", gap: "20px" }}>
                 <Link href="/learn" style={navLink}>
                   Learn
                 </Link>
-
                 <Link href="/teams" style={navLink}>
                   Teams
                 </Link>
-
                 <Link href="/projects" style={navLink}>
                   Projects
                 </Link>
-
                 <Link href="/hackathons" style={navLink}>
                   Hackathons
                 </Link>
@@ -88,13 +87,12 @@ export default function RootLayout({
           <main
             style={{
               flex: 1,
-              paddingTop: "100px", // ✅ offsets fixed navbar
+              paddingTop: "calc(96px + env(safe-area-inset-top))", // ✅ iOS offset
             }}
           >
             {children}
           </main>
 
-          {/* ---------------- FOOTER ---------------- */}
           <Footer />
         </ClickSpark>
       </body>
@@ -102,11 +100,8 @@ export default function RootLayout({
   );
 }
 
-/* ---------------- NAV LINK STYLE ---------------- */
-
 const navLink = {
   color: "gray",
   textDecoration: "none",
   fontSize: "15px",
-  transition: "0.3s",
 };
