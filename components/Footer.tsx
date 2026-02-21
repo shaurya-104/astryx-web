@@ -59,7 +59,7 @@ export default function Footer() {
                     }}
                 >
                     <p style={{ color: "gray", fontSize: "13px" }}>
-                        Made with by <span style={{ color: "white" }}>Shaurya</span>
+                        Made by <span style={{ color: "white" }}>Shaurya</span>
                     </p>
                 </div>
             </div>
