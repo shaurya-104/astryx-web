@@ -16,8 +16,23 @@ const AnimatedAstryx = () => {
   }, []);
 
   return (
-    <div className="relative inline-block">
-      <div className="flex text-7xl font-bold tracking-[0.3em] text-white relative z-10">
+    <div
+      style={{
+        maxWidth: "100%",
+        overflow: "hidden",
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          fontWeight: 700,
+          letterSpacing: "0.25em",
+          fontSize: "clamp(42px, 12vw, 96px)", // ✅ responsive
+        }}
+      >
         {letters.map((letter, index) => {
           const isLeft = index < 3;
           return (
@@ -48,12 +63,9 @@ const HomeScrollCTA = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
+      ([entry]) => entry.isIntersecting && setVisible(true),
       { threshold: 0.3 }
     );
-
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
@@ -89,8 +101,8 @@ const HomeScrollCTA = () => {
           Ongoing Projects
         </Link>
 
-        <Link href="/hackathons" style={filledButton}>
-          Hackathons
+        <Link href="/learn" style={filledButton}>
+          Learn & Join
         </Link>
       </div>
     </section>
@@ -106,12 +118,14 @@ export default function HomePage() {
         minHeight: "100vh",
         background: "black",
         color: "white",
+        overflowX: "hidden",
       }}
     >
       {/* HERO SECTION */}
       <section
         style={{
           minHeight: "100vh",
+          paddingTop: "120px", // ✅ prevents navbar overlap
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -121,22 +135,36 @@ export default function HomePage() {
       >
         <AnimatedAstryx />
 
-        <p style={{ marginTop: "24px", color: "gray" }}>
+        <p
+          style={{
+            marginTop: "24px",
+            color: "gray",
+            fontSize: "clamp(14px, 4vw, 18px)",
+          }}
+        >
           Learn · Build · Compete
         </p>
 
-        <div style={{ marginTop: "40px", display: "flex", gap: "20px" }}>
+        <div
+          style={{
+            marginTop: "40px",
+            display: "flex",
+            gap: "20px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <Link href="/learn" style={outlineButton}>
             Start Learning
           </Link>
 
           <Link href="/teams" style={filledButton}>
-            Join a Team
+            Join Us
           </Link>
         </div>
       </section>
 
-      {/* SCROLL CTA SECTION */}
+      {/* SCROLL CTA */}
       <HomeScrollCTA />
     </main>
   );
