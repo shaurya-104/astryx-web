@@ -1,103 +1,163 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+
+/* ---------------- HERO ANIMATION ---------------- */
+
+const AnimatedAstryx = () => {
+  const text = "ASTRYX";
+  const letters = text.split("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <div className="relative inline-block">
+      <div className="flex text-7xl font-bold tracking-[0.3em] text-white relative z-10">
+        {letters.map((letter, index) => {
+          const isLeft = index < 3;
+          return (
+            <motion.span
+              key={index}
+              initial={{ x: isLeft ? -40 : 40, opacity: 0 }}
+              animate={{ x: mounted ? 0 : isLeft ? -40 : 40, opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.05,
+                ease: "easeOut",
+              }}
+            >
+              {letter}
+            </motion.span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+/* ---------------- SCROLL CTA ---------------- */
+
+const HomeScrollCTA = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={ref}
+      style={{
+        padding: "120px 20px",
+        textAlign: "center",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(40px)",
+        transition: "all 0.8s ease",
+      }}
+    >
+      <h2 style={{ fontSize: "36px", marginBottom: "20px" }}>
+        Get Involved
+      </h2>
+
+      <p style={{ color: "gray", marginBottom: "40px" }}>
+        Explore what’s happening right now at ASTRYX
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Link href="/projects" style={outlineButton}>
+          Ongoing Projects
+        </Link>
+
+        <Link href="/hackathons" style={filledButton}>
+          Hackathons
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+/* ---------------- MAIN PAGE ---------------- */
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "black",
+        color: "white",
+      }}
+    >
+      {/* HERO SECTION */}
+      <section
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <AnimatedAstryx />
 
-      {/* ================= HERO ================= */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="
-            font-bold uppercase leading-none select-none
-            text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
-            tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.35em]
-            max-w-full whitespace-nowrap
-          "
-        >
-          ASTRYX
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-6 text-sm sm:text-base text-white/70"
-        >
+        <p style={{ marginTop: "24px", color: "gray" }}>
           Learn · Build · Compete
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-10 flex flex-col gap-4 w-full max-w-xs"
-        >
-          <Link
-            href="/learn"
-            className="px-8 py-3 rounded-full border border-white/40 hover:bg-white hover:text-black transition-all"
-          >
+        <div style={{ marginTop: "40px", display: "flex", gap: "20px" }}>
+          <Link href="/learn" style={outlineButton}>
             Start Learning
           </Link>
 
-          <Link
-            href="/teams"
-            className="px-8 py-3 rounded-full bg-white text-black hover:scale-105 transition-all"
-          >
+          <Link href="/teams" style={filledButton}>
             Join a Team
           </Link>
-        </motion.div>
+        </div>
       </section>
 
-      {/* ================= GET INVOLVED (RESTORED) ================= */}
-      <motion.section
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="px-6 py-32 text-center"
-      >
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-          Get Involved
-        </h2>
-
-        <p className="text-white/70 max-w-xl mx-auto mb-10">
-          Join our community, collaborate with like-minded builders,
-          and take part in events, teams, and challenges.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/events"
-            className="
-              px-8 py-3 rounded-full
-              border border-white/40
-              hover:bg-white hover:text-black
-              transition-all
-            "
-          >
-            Explore Events
-          </Link>
-
-          <Link
-            href="/get-involved"
-            className="
-              px-8 py-3 rounded-full
-              border border-white/20
-              text-white/80
-              hover:border-white/60 hover:text-white
-              transition-all
-            "
-          >
-            Learn How to Join
-          </Link>
-        </div>
-      </motion.section>
+      {/* SCROLL CTA SECTION */}
+      <HomeScrollCTA />
     </main>
   );
 }
+
+/* ---------------- STYLES ---------------- */
+
+const outlineButton = {
+  padding: "14px 32px",
+  border: "1px solid rgba(255,255,255,0.4)",
+  borderRadius: "30px",
+  textDecoration: "none",
+  color: "white",
+  transition: "0.3s",
+};
+
+const filledButton = {
+  padding: "14px 32px",
+  background: "white",
+  color: "black",
+  borderRadius: "30px",
+  textDecoration: "none",
+  transition: "0.3s",
+};
