@@ -2,26 +2,80 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+/* ---------------- DISTORTED ASTRYX ---------------- */
+
+const DistortedAstryx = ({ onComplete }: { onComplete: () => void }) => {
+  return (
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      onAnimationComplete={onComplete}
+      className="
+        relative font-bold uppercase leading-none select-none
+        text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
+        tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.35em]
+        whitespace-nowrap
+      "
+    >
+      {/* Base text */}
+      <span className="relative z-10">ASTRYX</span>
+
+      {/* Distortion layers */}
+      <motion.span
+        aria-hidden
+        className="absolute inset-0 text-white/60"
+        animate={{ x: [0, -2, 2, 0], y: [0, 1, -1, 0] }}
+        transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
+      >
+        ASTRYX
+      </motion.span>
+
+      <motion.span
+        aria-hidden
+        className="absolute inset-0 text-white/40"
+        animate={{ x: [0, 2, -2, 0], y: [0, -1, 1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+      >
+        ASTRYX
+      </motion.span>
+    </motion.h1>
+  );
+};
+
+/* ---------------- PAGE ---------------- */
 
 export default function HomePage() {
+  const [showNav, setShowNav] = useState(false);
+
   return (
     <main className="min-h-screen bg-black text-white">
 
+      {/* ================= NAVBAR ================= */}
+      {showNav && (
+        <motion.nav
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between bg-black"
+        >
+          <Link href="/" className="font-semibold">
+            ASTRYX
+          </Link>
+
+          <div className="flex gap-6 text-white/70">
+            <Link href="/learn">Learn</Link>
+            <Link href="/teams">Teams</Link>
+            <Link href="/events">Events</Link>
+          </div>
+        </motion.nav>
+      )}
+
       {/* ================= HERO ================= */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="
-            font-bold uppercase leading-none select-none
-            text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
-            tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.35em]
-            max-w-full whitespace-nowrap
-          "
-        >
-          ASTRYX
-        </motion.h1>
+        <DistortedAstryx onComplete={() => setShowNav(true)} />
 
         <motion.p
           initial={{ opacity: 0 }}
@@ -54,7 +108,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ================= GET INVOLVED (RESTORED) ================= */}
+      {/* ================= GET INVOLVED ================= */}
       <motion.section
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -73,28 +127,17 @@ export default function HomePage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/events"
-            className="
-              px-8 py-3 rounded-full
-              border border-white/40
-              hover:bg-white hover:text-black
-              transition-all
-            "
+            href="/get-involved"
+            className="px-8 py-3 rounded-full border border-white/20 text-white/80 hover:border-white/60 hover:text-white transition-all"
           >
-            Explore Events
+            Learn How to Join
           </Link>
 
           <Link
-            href="/get-involved"
-            className="
-              px-8 py-3 rounded-full
-              border border-white/20
-              text-white/80
-              hover:border-white/60 hover:text-white
-              transition-all
-            "
+            href="/hackathons"
+            className="px-8 py-3 rounded-full border border-white/40 hover:bg-white hover:text-black transition-all"
           >
-            Learn How to Join
+            Hackathons
           </Link>
         </div>
       </motion.section>
