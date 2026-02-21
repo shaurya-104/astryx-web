@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 /* ---------------- HERO ANIMATION ---------------- */
@@ -19,7 +19,6 @@ const AnimatedAstryx = () => {
     <div
       style={{
         maxWidth: "100%",
-        overflow: "hidden",
         display: "flex",
         justifyContent: "center",
       }}
@@ -28,8 +27,7 @@ const AnimatedAstryx = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          maxWidth: "90vw", // ✅ CRITICAL for iOS
-          overflow: "hidden",
+          maxWidth: "90vw",
           fontWeight: 700,
           letterSpacing: "0.22em",
           fontSize: "clamp(42px, 11vw, 96px)",
@@ -57,30 +55,18 @@ const AnimatedAstryx = () => {
   );
 };
 
-/* ---------------- SCROLL CTA ---------------- */
+/* ---------------- SCROLL CTA (iOS SAFE) ---------------- */
 
 const HomeScrollCTA = () => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={ref}
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }} // ✅ iOS-safe
+      transition={{ duration: 0.8, ease: "easeOut" }}
       style={{
         padding: "120px 20px",
         textAlign: "center",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-        transition: "all 0.8s ease",
       }}
     >
       <h2 style={{ fontSize: "36px", marginBottom: "20px" }}>
@@ -103,11 +89,11 @@ const HomeScrollCTA = () => {
           Ongoing Projects
         </Link>
 
-        <Link href="/learn" style={filledButton}>
-          Learn & Join
+        <Link href="/hackathons" style={filledButton}>
+          Hackathons
         </Link>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
@@ -117,17 +103,15 @@ export default function HomePage() {
   return (
     <main
       style={{
-        minHeight: "100vh",
         background: "black",
         color: "white",
-        overflowX: "hidden",
       }}
     >
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section
         style={{
-          minHeight: "100vh",
-          paddingTop: "120px", // ✅ prevents navbar overlap
+          minHeight: "100svh", // ✅ iOS-safe viewport
+          paddingTop: "120px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -166,7 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SCROLL CTA */}
+      {/* CTA */}
       <HomeScrollCTA />
     </main>
   );
@@ -180,7 +164,6 @@ const outlineButton = {
   borderRadius: "30px",
   textDecoration: "none",
   color: "white",
-  transition: "0.3s",
 };
 
 const filledButton = {
@@ -189,5 +172,4 @@ const filledButton = {
   color: "black",
   borderRadius: "30px",
   textDecoration: "none",
-  transition: "0.3s",
 };
