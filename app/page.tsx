@@ -61,40 +61,47 @@ const BurgerMenu = () => {
 /* ================= ASTRYX SPLIT ANIMATION ================= */
 
 const AstryxSplit = () => {
-  return (
-    <div className="relative flex text-white font-bold uppercase leading-none tracking-[0.35em] text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem] select-none">
+  const [merged, setMerged] = useState(false);
 
+  return (
+    <div className="relative flex items-center justify-center font-bold uppercase select-none leading-none tracking-[0.35em]
+      text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]"
+    >
       {/* AST from left */}
       <motion.span
-        initial={{ x: -200, opacity: 0 }}
+        initial={{ x: "-120vw", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
+        onAnimationComplete={() => setMerged(true)}
+        className="relative z-10"
       >
         AST
       </motion.span>
 
       {/* RYX from right */}
       <motion.span
-        initial={{ x: 200, opacity: 0 }}
+        initial={{ x: "120vw", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
+        className="relative z-10"
       >
         RYX
       </motion.span>
 
-      {/* subtle distortion overlay */}
-      <motion.span
-        aria-hidden
-        className="absolute inset-0 text-white/40"
-        animate={{ x: [0, -2, 2, 0], y: [0, 1, -1, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-      >
-        ASTRYX
-      </motion.span>
+      {/* Distortion ONLY AFTER merge */}
+      {merged && (
+        <motion.span
+          aria-hidden
+          className="absolute inset-0 text-white/40"
+          animate={{ x: [0, -2, 2, 0], y: [0, 1, -1, 0] }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+        >
+          ASTRYX
+        </motion.span>
+      )}
     </div>
   );
 };
-
 /* ================= PAGE ================= */
 
 export default function HomePage() {
