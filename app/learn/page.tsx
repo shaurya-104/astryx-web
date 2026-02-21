@@ -1,20 +1,22 @@
 "use client";
 
-import Folder from "../../components/Folder.tsx";
+import Folder from "../../components/Folder";
 
 export default function LearnPage() {
   return (
     <section
       style={{
         padding: "120px 20px",
-        minHeight: "120vh", // forces scroll
+        minHeight: "100svh", // ✅ iOS-safe viewport
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background: "black",
+        overflow: "hidden",
       }}
     >
       <Folder
-        size={2}
+        size={1.6}                 // visual size (safe)
         color="#5227FF"
         items={[
           <div key="1">📄 DSA Roadmap.pdf</div>,

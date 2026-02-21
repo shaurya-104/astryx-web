@@ -15,10 +15,13 @@ export default function Folder({
 }: FolderProps) {
     const [open, setOpen] = useState(false);
 
+    // Base dimensions
+    const width = 220 * size;
+    const height = 140 * size;
+
     return (
         <div
             style={{
-                transform: `scale(${size})`,
                 cursor: "pointer",
                 userSelect: "none",
             }}
@@ -27,24 +30,24 @@ export default function Folder({
             {/* Folder Body */}
             <div
                 style={{
-                    width: "220px",
-                    height: "140px",
+                    width,
+                    height,
                     background: color,
-                    borderRadius: "8px",
+                    borderRadius: "10px",
                     position: "relative",
-                    transition: "0.4s",
+                    transition: "0.3s ease",
                 }}
             >
                 {/* Folder Tab */}
                 <div
                     style={{
-                        width: "100px",
-                        height: "30px",
+                        width: width * 0.45,
+                        height: height * 0.25,
                         background: color,
                         position: "absolute",
-                        top: "-20px",
-                        left: "10px",
-                        borderRadius: "6px 6px 0 0",
+                        top: -height * 0.18,
+                        left: width * 0.06,
+                        borderRadius: "8px 8px 0 0",
                     }}
                 />
 
@@ -71,8 +74,8 @@ export default function Folder({
                                 key={index}
                                 style={{
                                     background: "#222",
-                                    padding: "6px 10px",
-                                    borderRadius: "4px",
+                                    padding: "8px 12px",
+                                    borderRadius: "6px",
                                     fontSize: "14px",
                                 }}
                             >
