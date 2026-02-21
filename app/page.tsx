@@ -10,7 +10,7 @@ const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  // close on outside click
+  // Close when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -46,7 +46,7 @@ const BurgerMenu = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute right-0 mt-4 w-48 rounded-xl border border-white/20 bg-black p-4 flex flex-col gap-3"
+          className="absolute right-0 mt-4 w-48 rounded-xl border border-white/20 bg-black p-4 flex flex-col gap-3 z-50"
         >
           <Link href="/learn" onClick={() => setOpen(false)}>Learn</Link>
           <Link href="/teams" onClick={() => setOpen(false)}>Teams</Link>
@@ -72,7 +72,7 @@ const AstryxSplit = () => {
         text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[8rem]
       "
     >
-      {/* AST (near-left) */}
+      {/* AST (near left) */}
       <motion.span
         initial={{ x: -60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -83,7 +83,7 @@ const AstryxSplit = () => {
         AST
       </motion.span>
 
-      {/* RYX (near-right) */}
+      {/* RYX (near right) */}
       <motion.span
         initial={{ x: 60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -93,7 +93,7 @@ const AstryxSplit = () => {
         RYX
       </motion.span>
 
-      {/* Subtle distortion AFTER merge */}
+      {/* Distortion ONLY after merge */}
       {merged && (
         <motion.span
           aria-hidden
@@ -114,13 +114,14 @@ const AstryxSplit = () => {
     </div>
   );
 };
+
 /* ================= PAGE ================= */
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-white">
 
-      {/* TOP NAV (ONLY BURGER NOW) */}
+      {/* ================= TOP NAV ================= */}
       <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-black">
         <Link href="/" className="font-semibold">
           ASTRYX
@@ -128,7 +129,7 @@ export default function HomePage() {
         <BurgerMenu />
       </nav>
 
-      {/* HERO */}
+      {/* ================= HERO ================= */}
       <section className="min-h-screen flex flex-col items-center justify-center px-4 pt-24 text-center overflow-hidden">
         <AstryxSplit />
 
@@ -152,6 +153,47 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* ================= GET INVOLVED ================= */}
+      <motion.section
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="px-6 py-32 text-center"
+      >
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+          Get Involved
+        </h2>
+
+        <p className="text-white/70 max-w-xl mx-auto mb-10">
+          Join our community, collaborate with builders, and participate
+          in projects, teams, and hackathons.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/projects"
+            className="px-8 py-3 rounded-full border border-white/40 hover:bg-white hover:text-black transition-all"
+          >
+            Projects
+          </Link>
+
+          <Link
+            href="/join"
+            className="px-8 py-3 rounded-full border border-white/20 text-white/80 hover:border-white/60 hover:text-white transition-all"
+          >
+            Learn How to Join
+          </Link>
+
+          <Link
+            href="/hackathons"
+            className="px-8 py-3 rounded-full border border-white/40 hover:bg-white hover:text-black transition-all"
+          >
+            Hackathons
+          </Link>
+        </div>
+      </motion.section>
     </main>
   );
 }
