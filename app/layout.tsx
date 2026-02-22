@@ -2,6 +2,8 @@ import "./globals.css";
 import Link from "next/link";
 import ClickSpark from "../components/ClickSpark";
 import Footer from "../components/Footer";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -95,6 +97,12 @@ export default function RootLayout({
 
           <Footer />
         </ClickSpark>
+
+        {/* ✅ Vercel Analytics */}
+        <Analytics />
+
+        {/* ⚡ Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
