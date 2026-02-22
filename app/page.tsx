@@ -149,7 +149,7 @@ export default function HomePage() {
             href="/teams"
             className="px-8 py-3 rounded-full bg-white text-black hover:scale-105 transition-all"
           >
-            Join a Team
+            Join
           </Link>
         </div>
       </section>
