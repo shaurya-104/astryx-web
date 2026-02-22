@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-three/fiber": "^9.5.0",
+    "@vercel/analytics": "^1.6.1",
     "framer-motion": "^12.34.3",
     "next": "16.1.6",
     "ogl": "^1.0.11",
