@@ -24,7 +24,7 @@ export default function Page() {
                 }}
             >
                 <li>
-                    <a href="https://x.com/" target="_blank">X (Twitter)</a>
+                    <a href="https://x.com/+" target="_blank">X (Twitter)</a>
                 </li>
                 <li>
                     <a href="https://www.instagram.com/astryx.innn?igsh=NDRnYTd6aTlwM3Vk" target="_blank">Instagram</a>
