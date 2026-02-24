@@ -44,19 +44,54 @@ export default function HackathonsPage() {
         </div>
       </section>
 
+      {/* ================= ABOUT ================= */}
+      <section
+        className="ignite-about fade"
+        ref={(el) => {
+          if (el) sectionsRef.current[0] = el;
+        }}
+      >
+        <div className="about-container">
+          <h2>About Ignite Hackathon</h2>
+
+          <p>
+            <strong>Ignite</strong> is a flagship hackathon organized by{" "}
+            <strong>ASTRYX</strong> in collaboration with{" "}
+            <strong>JHANKAR</strong>, as a part of the prestigious{" "}
+            <strong>Jhankar Fest</strong> at Panjab University.
+          </p>
+
+          <p>
+            This hackathon is designed to bring together passionate developers,
+            designers, and problem-solvers to collaborate, innovate, and build
+            impactful solutions within an intense and creative environment.
+          </p>
+
+          <p>
+            From brainstorming ideas to deploying working prototypes, Ignite is
+            where curiosity meets execution — and ideas turn into reality.
+          </p>
+        </div>
+      </section>
+
       {/* ================= ORGANISING COMMITTEE ================= */}
       <section
         className="ignite-section fade"
         ref={(el) => {
-          if (el) sectionsRef.current[0] = el;
+          if (el) sectionsRef.current[1] = el;
         }}
       >
         <h2>Organising Committee Applications</h2>
 
         <p>
-          As an organising committee member, you’ll work closely on event
-          planning, operations, outreach, tech coordination, and creative
-          execution — gaining real-world experience beyond classrooms.
+          Want to be part of the team that builds one of the most exciting tech
+          events at Panjab University?
+        </p>
+
+        <p>
+          Applications for the <strong>Ignite Hackathon Organising Committee</strong>{" "}
+          are now open. Join us to gain hands-on experience in event management,
+          tech operations, outreach, and creative execution.
         </p>
 
         <a
@@ -67,35 +102,6 @@ export default function HackathonsPage() {
         >
           Apply Now
         </a>
-      </section>
-
-      {/* ================= ABOUT ================= */}
-      <section
-        className="ignite-section fade"
-        ref={(el) => {
-          if (el) sectionsRef.current[1] = el;
-        }}
-      >
-        <h2>About Ignite Hackathon</h2>
-
-        <p>
-          <strong>Ignite</strong> is the flagship hackathon organised by{" "}
-          <strong>ASTRYX</strong> in collaboration with{" "}
-          <strong>JHANKAR</strong>, as part of the renowned{" "}
-          <strong>Jhankar Fest</strong> at Panjab University.
-        </p>
-
-        <p>
-          This hackathon is designed to bring together developers, designers,
-          innovators, and thinkers to collaborate under pressure and transform
-          ideas into impactful solutions.
-        </p>
-
-        <p>
-          Whether you’re building your first project or pushing your limits,
-          Ignite is where creativity meets execution — and teams turn vision
-          into reality.
-        </p>
       </section>
 
       {/* ================= FOOTER ================= */}
@@ -160,7 +166,30 @@ export default function HackathonsPage() {
           color: #bfc4ff;
         }
 
-        /* SECTIONS */
+        /* ABOUT (LEFT ALIGNED LIKE SCREENSHOT) */
+        .ignite-about {
+          padding: 140px 24px;
+        }
+
+        .about-container {
+          max-width: 900px;
+          margin-left: clamp(24px, 8vw, 120px);
+        }
+
+        .ignite-about h2 {
+          font-size: 42px;
+          margin-bottom: 28px;
+        }
+
+        .ignite-about p {
+          font-size: 18px;
+          line-height: 1.8;
+          color: #d1d5ff;
+          margin-bottom: 20px;
+          max-width: 720px;
+        }
+
+        /* ORGANISING COMMITTEE */
         .ignite-section {
           max-width: 900px;
           margin: 0 auto;
