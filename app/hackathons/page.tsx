@@ -54,11 +54,6 @@ export default function HackathonsPage() {
         <h2>Organising Committee Applications</h2>
 
         <p>
-          Be part of the core team behind one of the most exciting tech events at
-          Panjab University.
-        </p>
-
-        <p>
           As an organising committee member, you’ll work closely on event
           planning, operations, outreach, tech coordination, and creative
           execution — gaining real-world experience beyond classrooms.
