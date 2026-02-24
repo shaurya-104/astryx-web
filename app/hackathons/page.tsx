@@ -38,39 +38,13 @@ export default function HackathonsPage() {
       <section className="ignite-hero">
         <div className={`ignite-intro ${showIntro ? "show" : ""}`}>
           <p className="ignite-collab">ASTRYX × JHANKAR</p>
-          <h1 className="ignite-title">IGNITE</h1>
+
+          {/* PRESENTS MOVED ABOVE */}
           <p className="ignite-subtitle">PRESENTS</p>
+
+          <h1 className="ignite-title">IGNITE</h1>
+
           <p className="ignite-tagline">Ignite the code within you.</p>
-        </div>
-      </section>
-
-      {/* ================= ABOUT ================= */}
-      <section
-        className="ignite-about fade"
-        ref={(el) => {
-          if (el) sectionsRef.current[0] = el;
-        }}
-      >
-        <div className="about-container">
-          <h2>About Ignite Hackathon</h2>
-
-          <p>
-            <strong>Ignite</strong> is a flagship hackathon organized by{" "}
-            <strong>ASTRYX</strong> in collaboration with{" "}
-            <strong>JHANKAR</strong>, as a part of the prestigious{" "}
-            <strong>Jhankar Fest</strong> at Panjab University.
-          </p>
-
-          <p>
-            This hackathon is designed to bring together passionate developers,
-            designers, and problem-solvers to collaborate, innovate, and build
-            impactful solutions within an intense and creative environment.
-          </p>
-
-          <p>
-            From brainstorming ideas to deploying working prototypes, Ignite is
-            where curiosity meets execution — and ideas turn into reality.
-          </p>
         </div>
       </section>
 
@@ -78,7 +52,7 @@ export default function HackathonsPage() {
       <section
         className="ignite-section fade"
         ref={(el) => {
-          if (el) sectionsRef.current[1] = el;
+          if (el) sectionsRef.current[0] = el;
         }}
       >
         <h2>Organising Committee Applications</h2>
@@ -102,6 +76,36 @@ export default function HackathonsPage() {
         >
           Apply Now
         </a>
+      </section>
+
+      {/* ================= ABOUT ================= */}
+      <section
+        className="ignite-about fade"
+        ref={(el) => {
+          if (el) sectionsRef.current[1] = el;
+        }}
+      >
+        <div className="about-container">
+          <h2>About Ignite Hackathon</h2>
+
+          <p>
+            <strong>Ignite</strong> is a flagship hackathon organized by{" "}
+            <strong>ASTRYX</strong> in collaboration with{" "}
+            <strong>JHANKAR</strong>, as a part of the prestigious{" "}
+            <strong>Jhankar Fest</strong> at Panjab University.
+          </p>
+
+          <p>
+            This hackathon is designed to bring together passionate developers,
+            designers, and problem-solvers to collaborate, innovate, and build
+            impactful solutions within an intense and creative environment.
+          </p>
+
+          <p>
+            From brainstorming ideas to deploying working prototypes, Ignite is
+            where curiosity meets execution — and ideas turn into reality.
+          </p>
+        </div>
       </section>
 
       {/* ================= FOOTER ================= */}
@@ -141,7 +145,14 @@ export default function HackathonsPage() {
           font-size: 14px;
           letter-spacing: 6px;
           color: #9aa3ff;
-          margin-bottom: 16px;
+          margin-bottom: 18px;
+        }
+
+        .ignite-subtitle {
+          letter-spacing: 4px;
+          font-size: 14px;
+          color: #cfd3ff;
+          margin-bottom: 18px;
         }
 
         .ignite-title {
@@ -153,40 +164,10 @@ export default function HackathonsPage() {
           margin: 0;
         }
 
-        .ignite-subtitle {
-          margin-top: 10px;
-          letter-spacing: 4px;
-          font-size: 14px;
-          color: #cfd3ff;
-        }
-
         .ignite-tagline {
           margin-top: 18px;
           font-size: 18px;
           color: #bfc4ff;
-        }
-
-        /* ABOUT (LEFT ALIGNED LIKE SCREENSHOT) */
-        .ignite-about {
-          padding: 140px 24px;
-        }
-
-        .about-container {
-          max-width: 900px;
-          margin-left: clamp(24px, 8vw, 120px);
-        }
-
-        .ignite-about h2 {
-          font-size: 42px;
-          margin-bottom: 28px;
-        }
-
-        .ignite-about p {
-          font-size: 18px;
-          line-height: 1.8;
-          color: #d1d5ff;
-          margin-bottom: 20px;
-          max-width: 720px;
         }
 
         /* ORGANISING COMMITTEE */
@@ -207,6 +188,29 @@ export default function HackathonsPage() {
           line-height: 1.7;
           color: #d1d5ff;
           margin-bottom: 18px;
+        }
+
+        /* ABOUT */
+        .ignite-about {
+          padding: 140px 24px;
+        }
+
+        .about-container {
+          max-width: 900px;
+          margin-left: clamp(24px, 8vw, 120px);
+        }
+
+        .ignite-about h2 {
+          font-size: 42px;
+          margin-bottom: 28px;
+        }
+
+        .ignite-about p {
+          font-size: 18px;
+          line-height: 1.8;
+          color: #d1d5ff;
+          margin-bottom: 20px;
+          max-width: 720px;
         }
 
         /* SCROLL ANIMATION */
