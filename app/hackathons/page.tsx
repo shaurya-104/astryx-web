@@ -44,7 +44,7 @@ export default function HackathonsPage() {
 
           <h1 className="ignite-title">IGNITE</h1>
 
-          <p className="ignite-tagline">Ignite the code within you.</p>
+          <p className="ignite-tagline">Ignite the coder within you.</p>
         </div>
       </section>
 
