@@ -38,51 +38,17 @@ export default function HackathonsPage() {
       <section className="ignite-hero">
         <div className={`ignite-intro ${showIntro ? "show" : ""}`}>
           <p className="ignite-collab">ASTRYX × JHANKAR</p>
-
-          {/* PRESENTS MOVED ABOVE */}
           <p className="ignite-subtitle">PRESENTS</p>
-
           <h1 className="ignite-title">IGNITE</h1>
-
-          <p className="ignite-tagline">Ignite the coder within you.</p>
+          <p className="ignite-tagline">Ignite the code within you.</p>
         </div>
-      </section>
-
-      {/* ================= ORGANISING COMMITTEE ================= */}
-      <section
-        className="ignite-section fade"
-        ref={(el) => {
-          if (el) sectionsRef.current[0] = el;
-        }}
-      >
-        <h2>Organising Committee Applications</h2>
-
-        <p>
-          Want to be part of the team that builds one of the most exciting tech
-          events at Panjab University?
-        </p>
-
-        <p>
-          Applications for the <strong>Ignite Hackathon Organising Committee</strong>{" "}
-          are now open. Join us to gain hands-on experience in event management,
-          tech operations, outreach, and creative execution.
-        </p>
-
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSerw-kcUANxp1hQOwcLdj0cJLqcmRNBvqY0oKqXLbrUcWVQkg/viewform?usp=header"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ignite-btn"
-        >
-          Apply Now
-        </a>
       </section>
 
       {/* ================= ABOUT ================= */}
       <section
         className="ignite-about fade"
         ref={(el) => {
-          if (el) sectionsRef.current[1] = el;
+          if (el) sectionsRef.current[0] = el;
         }}
       >
         <div className="about-container">
@@ -108,6 +74,36 @@ export default function HackathonsPage() {
         </div>
       </section>
 
+      {/* ================= ORGANISING COMMITTEE ================= */}
+      <section
+        className="ignite-section fade"
+        ref={(el) => {
+          if (el) sectionsRef.current[1] = el;
+        }}
+      >
+        <h2>Organising Committee Applications</h2>
+
+        <p>
+          Want to be part of the team that builds one of the most exciting tech
+          events at Panjab University?
+        </p>
+
+        <p>
+          Applications for the <strong>Ignite Hackathon Organising Committee</strong>{" "}
+          are now open. Join us to gain hands-on experience in event management,
+          tech operations, outreach, and creative execution.
+        </p>
+
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSerw-kcUANxp1hQOwcLdj0cJLqcmRNBvqY0oKqXLbrUcWVQkg/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ignite-btn"
+        >
+          Apply Now
+        </a>
+      </section>
+
       {/* ================= FOOTER ================= */}
       <footer className="ignite-footer">
         ASTRYX × JHANKAR · Ignite Hackathon · Panjab University
@@ -121,7 +117,6 @@ export default function HackathonsPage() {
           overflow-x: hidden;
         }
 
-        /* HERO */
         .ignite-hero {
           min-height: 100vh;
           display: flex;
@@ -170,27 +165,6 @@ export default function HackathonsPage() {
           color: #bfc4ff;
         }
 
-        /* ORGANISING COMMITTEE */
-        .ignite-section {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 120px 24px;
-          text-align: center;
-        }
-
-        .ignite-section h2 {
-          font-size: 36px;
-          margin-bottom: 24px;
-        }
-
-        .ignite-section p {
-          font-size: 18px;
-          line-height: 1.7;
-          color: #d1d5ff;
-          margin-bottom: 18px;
-        }
-
-        /* ABOUT */
         .ignite-about {
           padding: 140px 24px;
         }
@@ -213,7 +187,25 @@ export default function HackathonsPage() {
           max-width: 720px;
         }
 
-        /* SCROLL ANIMATION */
+        .ignite-section {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 120px 24px;
+          text-align: center;
+        }
+
+        .ignite-section h2 {
+          font-size: 36px;
+          margin-bottom: 24px;
+        }
+
+        .ignite-section p {
+          font-size: 18px;
+          line-height: 1.7;
+          color: #d1d5ff;
+          margin-bottom: 18px;
+        }
+
         .fade {
           opacity: 0;
           transform: translateY(60px);
@@ -225,7 +217,6 @@ export default function HackathonsPage() {
           transform: translateY(0);
         }
 
-        /* BUTTON */
         .ignite-btn {
           display: inline-block;
           margin-top: 32px;
@@ -244,7 +235,6 @@ export default function HackathonsPage() {
           box-shadow: 0 20px 40px rgba(255, 106, 0, 0.35);
         }
 
-        /* FOOTER */
         .ignite-footer {
           padding: 40px 20px;
           text-align: center;
