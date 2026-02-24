@@ -106,7 +106,7 @@ export default function HackathonsPage() {
 
       {/* ================= FOOTER ================= */}
       <footer className="ignite-footer">
-        ASTRYX × JHANKAR · Ignite Hackathon · Panjab University
+        ASTRYX × JHANKAAR · Ignite Hackathon · Panjab University
       </footer>
 
       {/* ================= STYLES ================= */}
