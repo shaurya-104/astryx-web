@@ -7,24 +7,18 @@ export default function HackathonsPage() {
   const sectionsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const introTimer = setTimeout(() => {
-      setShowIntro(true);
-    }, 600);
+    const introTimer = setTimeout(() => setShowIntro(true), 600);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.2 }
     );
 
-    sectionsRef.current.forEach((section) => {
-      if (section) observer.observe(section);
-    });
+    sectionsRef.current.forEach((s) => s && observer.observe(s));
 
     return () => {
       clearTimeout(introTimer);
@@ -47,73 +41,90 @@ export default function HackathonsPage() {
       {/* ================= ABOUT ================= */}
       <section
         className="ignite-about fade"
-        ref={(el) => {
-          if (el) sectionsRef.current[0] = el;
-        }}
+        ref={(el) => el && (sectionsRef.current[0] = el)}
       >
         <div className="about-container">
           <h2>About Ignite Hackathon</h2>
-
           <p>
             <strong>Ignite</strong> is a flagship hackathon organized by{" "}
             <strong>ASTRYX</strong> in collaboration with{" "}
-            <strong>JHANKAR</strong>, as a part of the prestigious{" "}
-            <strong>Jhankar Fest</strong> at Panjab University.
+            <strong>JHANKAR</strong> during <strong>Jhankar Fest</strong> at
+            Panjab University.
           </p>
-
           <p>
-            This hackathon is designed to bring together passionate developers,
-            designers, and problem-solvers to collaborate, innovate, and build
-            impactful solutions within an intense and creative environment.
-          </p>
-
-          <p>
-            From brainstorming ideas to deploying working prototypes, Ignite is
-            where curiosity meets execution — and ideas turn into reality.
+            A high-energy 24-hour hackathon where developers collaborate, innovate
+            and ship impactful solutions.
           </p>
         </div>
       </section>
 
-      {/* ================= ORGANISING COMMITTEE ================= */}
+      {/* ================= RULES ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => {
-          if (el) sectionsRef.current[1] = el;
-        }}
+        ref={(el) => el && (sectionsRef.current[1] = el)}
       >
-        <h2>Organising Committee Applications</h2>
+        <h2>Ignite Rules</h2>
+        <ul className="rules-list">
+          <li>Team size: 2–4 members</li>
+          <li>24-hour on-ground hackathon</li>
+          <li>No pre-built projects allowed</li>
+          <li>Internet usage permitted</li>
+          <li>Judges’ decision will be final</li>
+        </ul>
+      </section>
 
+      {/* ================= REGISTRATION ================= */}
+      <section
+        className="ignite-section fade"
+        ref={(el) => el && (sectionsRef.current[2] = el)}
+      >
+        <h2>Register for Ignite</h2>
         <p>
-          Want to be part of the team that builds one of the most exciting tech
-          events at Panjab University?
-        </p>
-
-        <p>
-          Applications for the <strong>Ignite Hackathon Organising Committee</strong>{" "}
-          are now open. Join us to gain hands-on experience in event management,
-          tech operations, outreach, and creative execution.
+          Fill out the registration form and complete the payment to confirm your
+          participation.
         </p>
 
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSerw-kcUANxp1hQOwcLdj0cJLqcmRNBvqY0oKqXLbrUcWVQkg/viewform?usp=header"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeiiOMFIYDfAQvXJshzEELyW3QOdHmPGXNgIcsCRvgRaQ9R8Q/viewform"
           target="_blank"
           rel="noopener noreferrer"
           className="ignite-btn"
         >
-          Apply Now
+          Open Registration Form
         </a>
+      </section>
+
+      {/* ================= PAYMENT ================= */}
+      <section
+        className="ignite-section fade"
+        ref={(el) => el && (sectionsRef.current[3] = el)}
+      >
+        <h2>Registration Fee Payment</h2>
+        <p>Scan the QR below to pay via any UPI app</p>
+
+        <div className="qr-box">
+          <img
+            src="/gpay-ignite.png"
+            alt="UPI Payment QR - Samagra Saharia"
+          />
+          <p className="upi-id">UPI ID: samagrasaharia@okicici</p>
+        </div>
+
+        <p className="payment-note">
+          Upload the payment screenshot inside the Google Form after payment.
+        </p>
       </section>
 
       {/* ================= FOOTER ================= */}
       <footer className="ignite-footer">
-        ASTRYX × JHANKAAR · Ignite Hackathon · Panjab University
+        ASTRYX × JHANKAR · Ignite Hackathon · Panjab University
       </footer>
 
       {/* ================= STYLES ================= */}
       <style jsx>{`
         .ignite-root {
           background: radial-gradient(circle at top, #0b0f1a, #05070d 70%);
-          color: #ffffff;
+          color: #fff;
           overflow-x: hidden;
         }
 
@@ -137,17 +148,15 @@ export default function HackathonsPage() {
         }
 
         .ignite-collab {
-          font-size: 14px;
           letter-spacing: 6px;
+          font-size: 14px;
           color: #9aa3ff;
-          margin-bottom: 18px;
         }
 
         .ignite-subtitle {
           letter-spacing: 4px;
           font-size: 14px;
           color: #cfd3ff;
-          margin-bottom: 18px;
         }
 
         .ignite-title {
@@ -156,11 +165,9 @@ export default function HackathonsPage() {
           background: linear-gradient(90deg, #ff6a00, #ffb347);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin: 0;
         }
 
         .ignite-tagline {
-          margin-top: 18px;
           font-size: 18px;
           color: #bfc4ff;
         }
@@ -174,36 +181,11 @@ export default function HackathonsPage() {
           margin-left: clamp(24px, 8vw, 120px);
         }
 
-        .ignite-about h2 {
-          font-size: 42px;
-          margin-bottom: 28px;
-        }
-
-        .ignite-about p {
-          font-size: 18px;
-          line-height: 1.8;
-          color: #d1d5ff;
-          margin-bottom: 20px;
-          max-width: 720px;
-        }
-
         .ignite-section {
           max-width: 900px;
           margin: 0 auto;
           padding: 120px 24px;
           text-align: center;
-        }
-
-        .ignite-section h2 {
-          font-size: 36px;
-          margin-bottom: 24px;
-        }
-
-        .ignite-section p {
-          font-size: 18px;
-          line-height: 1.7;
-          color: #d1d5ff;
-          margin-bottom: 18px;
         }
 
         .fade {
@@ -217,22 +199,51 @@ export default function HackathonsPage() {
           transform: translateY(0);
         }
 
+        .rules-list {
+          list-style: none;
+          padding: 0;
+          font-size: 18px;
+          color: #d1d5ff;
+        }
+
+        .rules-list li {
+          margin-bottom: 12px;
+        }
+
         .ignite-btn {
-          display: inline-block;
           margin-top: 32px;
           padding: 14px 40px;
-          font-size: 16px;
-          font-weight: 600;
           border-radius: 40px;
           background: linear-gradient(90deg, #ff6a00, #ffb347);
           color: #000;
+          font-weight: 600;
           text-decoration: none;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .ignite-btn:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 20px 40px rgba(255, 106, 0, 0.35);
+        .qr-box {
+          margin-top: 32px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .qr-box img {
+          width: 240px;
+          padding: 12px;
+          background: #fff;
+          border-radius: 18px;
+        }
+
+        .upi-id {
+          margin-top: 14px;
+          font-size: 15px;
+          color: #cfd3ff;
+        }
+
+        .payment-note {
+          margin-top: 18px;
+          font-size: 14px;
+          color: #9aa3ff;
         }
 
         .ignite-footer {
@@ -240,7 +251,6 @@ export default function HackathonsPage() {
           text-align: center;
           font-size: 14px;
           color: #8a90ff;
-          opacity: 0.7;
         }
       `}</style>
     </main>
