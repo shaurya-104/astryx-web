@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ASTRYX Studio – Official Website
 
-## Getting Started
+**Status:** Live  
+**Role:** Founder & Sole Developer  
 
-First, run the development server:
+🔗 Live Website: https://astryx-studio.vercel.app/  
+🔗 Deployment: Vercel  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This is the official website of **ASTRYX Studio**, a student-led tech club founded by me.  
+The website was designed, developed, and deployed independently to establish the club’s online presence and branding.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project was built during my **1st year of B.Tech at UIET, Panjab University**.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Responsibilities
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Founded ASTRYX Studio and defined its digital identity  
+- Designed and developed the complete website independently  
+- Implemented responsive UI and modern frontend architecture  
+- Deployed and maintained the production build using Vercel  
+- Managed the entire codebase, updates, and iterations  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js  
+- React  
+- TypeScript  
+- Tailwind CSS  
+- Git & GitHub  
+- Vercel  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Proof of Ownership
+
+- All commits in this repository are made by me  
+- Live production deployment linked above  
+- Project built and maintained independently  
+
+---
+
+## Timeline
+
+- **Started:** First Year, B.Tech  
+- **Institution:** UIET, Panjab University  
+- **Role:** Founder of astryx* & Full-Stack Developer  
+
+---
+
+## Notes
+
+This repository serves as long-term proof of early real-world development experience involving:
+- Real users  
+- Live deployment  
+- Organizational ownership  
+
+AI tools were used as productivity aids, while all architecture, integration, debugging, and deployment decisions were made by me.
