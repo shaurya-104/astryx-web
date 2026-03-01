@@ -45,7 +45,7 @@ export default function HackathonsPage() {
       >
         <h2>Ignite Rules</h2>
         <ul className="rules-list">
-          <li>Team size: 2–4 members</li>
+          <li>Team size: 2–5 members</li>
           <li>24-hour on-ground hackathon</li>
           <li>No pre-built projects allowed</li>
           <li>Internet usage permitted</li>
