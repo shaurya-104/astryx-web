@@ -140,7 +140,7 @@ export default function HackathonsPage() {
             </div>
             <div className="detail-item">
               <span className="cyan-label">Location</span>
-              <span className="detail-value">Offline (UIET Campus)</span>
+              <span className="detail-value">Offline (PU Campus)</span>
             </div>
             <div className="detail-item">
               <span className="cyan-label">Deadline</span>
