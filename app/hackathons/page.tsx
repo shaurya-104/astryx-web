@@ -38,7 +38,13 @@ export default function HackathonsPage() {
           <div className="badge-collab">ASTRYX × JHANKAR</div>
           <p className="ignite-subtitle">PRESENTS</p>
           <h1 className="ignite-title">IGNITE</h1>
-          <p className="ignite-tagline">Ignite the coder within you.</p>
+          <p className="ignite-tagline">Ignite the code within you.</p>
+
+          {/* Subtle Prize Pool Hook */}
+          <div className="hero-prize-badge">
+            <span className="prize-icon">🏆</span>
+            Prize Pool: ₹50,000+
+          </div>
         </div>
       </section>
 
@@ -51,8 +57,8 @@ export default function HackathonsPage() {
         <div className="cards-grid">
           <div className="premium-card">
             <div className="card-icon">🏆</div>
-            <h3>Win Prizes</h3>
-            <p>Compete against the best and win exciting rewards and recognition.</p>
+            <h3>Win Big Prizes</h3>
+            <p>Compete for a total prize pool of ₹50,000, including cash, exclusive goodies, and premium swag.</p>
           </div>
           <div className="premium-card">
             <div className="card-icon">💡</div>
@@ -140,7 +146,7 @@ export default function HackathonsPage() {
             </div>
             <div className="detail-item">
               <span className="cyan-label">Location</span>
-              <span className="detail-value">Offline (PU Campus)</span>
+              <span className="detail-value">Offline (UIET Campus)</span>
             </div>
             <div className="detail-item">
               <span className="cyan-label">Deadline</span>
@@ -337,6 +343,33 @@ export default function HackathonsPage() {
           color: #00e5ff; 
           font-weight: 500;
           letter-spacing: 1px;
+          margin-bottom: 24px;
+        }
+        
+        /* NEW: PRIZE POOL BADGE */
+        .hero-prize-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 215, 0, 0.1);
+          border: 1px solid rgba(255, 215, 0, 0.4);
+          color: #ffd700;
+          padding: 8px 20px;
+          border-radius: 30px;
+          font-size: 16px;
+          font-weight: 700;
+          box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+          animation: floatPrize 3s ease-in-out infinite;
+        }
+        
+        .prize-icon {
+          font-size: 18px;
+        }
+        
+        @keyframes floatPrize {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3); }
+          100% { transform: translateY(0px); }
         }
 
         /* GLOBAL SECTION STYLES */
