@@ -14,7 +14,7 @@ export default function HackathonsPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            observer.unobserve(entry.target); 
           }
         });
       },
@@ -39,7 +39,7 @@ export default function HackathonsPage() {
           <p className="ignite-subtitle">PRESENTS</p>
           <h1 className="ignite-title">IGNITE</h1>
           <p className="ignite-tagline">Ignite the coder within you.</p>
-
+          
           {/* Subtle Prize Pool Hook */}
           <div className="hero-prize-badge">
             <span className="prize-icon">🏆</span>
@@ -58,7 +58,7 @@ export default function HackathonsPage() {
           <div className="premium-card">
             <div className="card-icon">🏆</div>
             <h3>Win Big Prizes</h3>
-            <p>Compete for a prize pool of ₹50,000+, including cash, exclusive goodies, and premium swag.</p>
+            <p>Compete for a total prize pool of ₹50,000, including cash, exclusive goodies, and premium swag.</p>
           </div>
           <div className="premium-card">
             <div className="card-icon">💡</div>
@@ -73,70 +73,14 @@ export default function HackathonsPage() {
         </div>
       </section>
 
-      {/* ================= MINI EVENTS ================= */}
-      <section
-        className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[1] = el)}
-        style={{ textAlign: 'center' }}
-      >
-        <h2 className="section-title">Side Quests & Mini Events</h2>
-        <p className="section-subtitle">Take a break from building and test your raw skills to win extra goodies.</p>
-
-        <div className="event-rule-badge">
-          ⚔️ <strong>Champion Rule:</strong> Each team can nominate exactly 1 member to compete in each game.
-        </div>
-
-        <div className="events-grid">
-          <div className="event-card">
-            <div className="event-emoji">🕵️‍♂️</div>
-            <h4>MySQL Code Detective</h4>
-            <p className="event-desc">Solve mysteries and extract hidden flags using complex queries and joins.</p>
-            <div className="event-skills">
-              <span className="skill-tag">SQL</span>
-              <span className="skill-tag">Database Logic</span>
-            </div>
-          </div>
-
-          <div className="event-card">
-            <div className="event-emoji">🔐</div>
-            <h4>Logic Lock</h4>
-            <p className="event-desc">Crack the codes, solve riddles, and escape the digital room before time runs out.</p>
-            <div className="event-skills">
-              <span className="skill-tag">Cryptography</span>
-              <span className="skill-tag">Aptitude</span>
-            </div>
-          </div>
-
-          <div className="event-card">
-            <div className="event-emoji">🧠</div>
-            <h4>DSA Quiz</h4>
-            <p className="event-desc">Battle it out on time/space complexity and core algorithmic problem solving.</p>
-            <div className="event-skills">
-              <span className="skill-tag">Data Structures</span>
-              <span className="skill-tag">Algorithms</span>
-            </div>
-          </div>
-
-          <div className="event-card">
-            <div className="event-emoji">⚡</div>
-            <h4>Tech Quiz</h4>
-            <p className="event-desc">Show off your knowledge of CS fundamentals, tech history, and geek trivia.</p>
-            <div className="event-skills">
-              <span className="skill-tag">CS Core</span>
-              <span className="skill-tag">Tech Trivia</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ================= COMBINED REGISTRATION & PAYMENT ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[2] = el)}
+        ref={(el) => el && (sectionsRef.current[1] = el)}
       >
         <h2 className="section-title">Event Details & Registration</h2>
         <div className="premium-card registration-dashboard">
-
+          
           {/* Left Side: Details & CTA */}
           <div className="reg-details">
             <h3 className="reg-heading">Join the Hackathon</h3>
@@ -146,7 +90,7 @@ export default function HackathonsPage() {
             </div>
             <div className="detail-item">
               <span className="cyan-label">Location</span>
-              <span className="detail-value">Offline (UIET Campus)</span>
+              <span className="detail-value">Offline (PU Campus)</span>
             </div>
             <div className="detail-item">
               <span className="cyan-label">Deadline</span>
@@ -192,12 +136,12 @@ export default function HackathonsPage() {
       {/* ================= TIMELINE ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[3] = el)}
+        ref={(el) => el && (sectionsRef.current[2] = el)}
       >
         <h2 className="section-title">Hackathon Timeline</h2>
         <div className="premium-card timeline-container">
           <div className="timeline-track">
-
+            
             <div className="timeline-node">
               <div className="node-content">
                 <div className="node-header">
@@ -212,7 +156,7 @@ export default function HackathonsPage() {
               <div className="node-content">
                 <h3>Hackathon Begins</h3>
                 <p className="node-date">15th March, 2026</p>
-                <p className="node-desc">24 hours of non-stop coding, events, and building.</p>
+                <p className="node-desc">Non-stop coding, events, and building innovative projects.</p>
               </div>
             </div>
 
@@ -223,7 +167,7 @@ export default function HackathonsPage() {
       {/* ================= RULES (VERTICAL) ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[4] = el)}
+        ref={(el) => el && (sectionsRef.current[3] = el)}
       >
         <h2 className="section-title">Ignite Rules</h2>
         <div className="rules-vertical">
@@ -232,8 +176,8 @@ export default function HackathonsPage() {
             <div className="rule-text"><strong>Team size:</strong> 2–5 members</div>
           </div>
           <div className="rule-row">
-            <div className="rule-icon-box">⏳</div>
-            <div className="rule-text"><strong>Duration:</strong> 24-hour on-ground hackathon</div>
+            <div className="rule-icon-box">🏢</div>
+            <div className="rule-text"><strong>Format:</strong> Offline / On-ground hackathon</div>
           </div>
           <div className="rule-row">
             <div className="rule-icon-box">🚫</div>
@@ -346,7 +290,7 @@ export default function HackathonsPage() {
           margin-bottom: 24px;
         }
         
-        /* NEW: PRIZE POOL BADGE */
+        /* PRIZE POOL BADGE */
         .hero-prize-badge {
           display: inline-flex;
           align-items: center;
@@ -454,85 +398,6 @@ export default function HackathonsPage() {
           color: #9aa3ff;
           font-size: 15px;
           line-height: 1.7;
-        }
-
-        /* MINI EVENTS */
-        .event-rule-badge {
-          display: inline-block;
-          background: rgba(255, 106, 0, 0.1);
-          border: 1px solid rgba(255, 106, 0, 0.3);
-          color: #ffb347;
-          padding: 10px 24px;
-          border-radius: 50px;
-          font-size: 14px;
-          margin-bottom: 40px;
-          box-shadow: 0 0 20px rgba(255, 106, 0, 0.15);
-        }
-
-        .events-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 20px;
-        }
-
-        .event-card {
-          background: rgba(0, 0, 0, 0.3);
-          border: 1px dashed rgba(255, 106, 0, 0.3);
-          border-radius: 16px;
-          padding: 28px 20px;
-          text-align: center;
-          transition: all 0.3s ease;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 100%;
-        }
-
-        .event-card:hover {
-          background: rgba(255, 106, 0, 0.05);
-          border-style: solid;
-          border-color: #ff6a00;
-          transform: translateY(-6px);
-          box-shadow: 0 10px 25px rgba(255, 106, 0, 0.15);
-        }
-
-        .event-emoji {
-          font-size: 44px;
-          margin-bottom: 16px;
-          filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-        }
-
-        .event-card h4 {
-          color: #e2e8f0;
-          font-size: 18px;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-        }
-
-        .event-desc {
-          color: #8a90ff;
-          font-size: 14px;
-          line-height: 1.5;
-          margin-bottom: 20px;
-          flex-grow: 1; /* Pushes skills to the bottom evenly */
-        }
-
-        .event-skills {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 8px;
-          margin-top: auto;
-        }
-
-        .skill-tag {
-          font-size: 12px;
-          font-weight: 600;
-          color: #00e5ff;
-          background: rgba(0, 229, 255, 0.08);
-          border: 1px solid rgba(0, 229, 255, 0.2);
-          padding: 4px 12px;
-          border-radius: 20px;
         }
 
         /* REGISTRATION & PAYMENT DASHBOARD */
