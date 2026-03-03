@@ -58,7 +58,7 @@ export default function HackathonsPage() {
           <div className="premium-card">
             <div className="card-icon">🏆</div>
             <h3>Win Big Prizes</h3>
-            <p>Compete for a total prize pool of ₹50,000, including cash, exclusive goodies, and premium swag.</p>
+            <p>Compete for a prize pool of ₹50,000+, including cash, exclusive goodies, and premium swag.</p>
           </div>
           <div className="premium-card">
             <div className="card-icon">💡</div>
