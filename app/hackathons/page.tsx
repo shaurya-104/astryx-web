@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function HackathonsPage() {
+export default function HackathonPage() {
   const [showIntro, setShowIntro] = useState(false);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
 
@@ -31,6 +31,9 @@ export default function HackathonsPage() {
 
   return (
     <main className="ignite-root">
+      {/* Background Tech Grid */}
+      <div className="bg-grid"></div>
+
       {/* ================= HERO ================= */}
       <section className="ignite-hero">
         <div className="hero-glow"></div>
@@ -38,9 +41,8 @@ export default function HackathonsPage() {
           <div className="badge-collab">ASTRYX × JHANKAR</div>
           <p className="ignite-subtitle">PRESENTS</p>
           <h1 className="ignite-title">IGNITE</h1>
-          <p className="ignite-tagline">Ignite the coder within you.</p>
+          <p className="ignite-tagline">From Screens to Solutions.</p>
           
-          {/* Subtle Prize Pool Hook */}
           <div className="hero-prize-badge">
             <span className="prize-icon">🏆</span>
             Prize Pool: ₹50,000+
@@ -73,10 +75,57 @@ export default function HackathonsPage() {
         </div>
       </section>
 
-      {/* ================= COMBINED REGISTRATION & PAYMENT ================= */}
+      {/* ================= THEMES SECTION (NEW) ================= */}
       <section
         className="ignite-section fade"
         ref={(el) => el && (sectionsRef.current[1] = el)}
+      >
+        <h2 className="section-title">Hackathon Themes</h2>
+        <p className="section-subtitle">Choose your domain. Build the future.</p>
+        
+        <div className="classified-badge">
+          🔒 <strong>Top Secret:</strong> Specific problem statements for each theme will be revealed on the day of the hackathon!
+        </div>
+
+        <div className="themes-grid">
+          <div className="theme-card">
+            <div className="theme-header">
+              <span className="theme-emoji">🤖</span>
+              <h3>AI for Everyday Life</h3>
+            </div>
+            <p>Build intelligent tools, automations, and bots that solve real, daily human problems using AI.</p>
+          </div>
+
+          <div className="theme-card">
+            <div className="theme-header">
+              <span className="theme-emoji">☁️</span>
+              <h3>Cloud Computing</h3>
+            </div>
+            <p>Architect highly scalable, secure, and accessible systems that leverage the true power of the cloud.</p>
+          </div>
+
+          <div className="theme-card">
+            <div className="theme-header">
+              <span className="theme-emoji">💳</span>
+              <h3>FinTech</h3>
+            </div>
+            <p>Innovate in digital finance, payment gateways, budget tracking, and economic empowerment.</p>
+          </div>
+
+          <div className="theme-card">
+            <div className="theme-header">
+              <span className="theme-emoji">🌍</span>
+              <h3>Open Innovation</h3>
+            </div>
+            <p>No limits. Have a crazy, impactful idea that doesn't fit the other tracks? Build it here.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= COMBINED REGISTRATION & PAYMENT ================= */}
+      <section
+        className="ignite-section fade"
+        ref={(el) => el && (sectionsRef.current[2] = el)}
       >
         <h2 className="section-title">Event Details & Registration</h2>
         <div className="premium-card registration-dashboard">
@@ -136,7 +185,7 @@ export default function HackathonsPage() {
       {/* ================= TIMELINE ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[2] = el)}
+        ref={(el) => el && (sectionsRef.current[3] = el)}
       >
         <h2 className="section-title">Hackathon Timeline</h2>
         <div className="premium-card timeline-container">
@@ -156,7 +205,7 @@ export default function HackathonsPage() {
               <div className="node-content">
                 <h3>Hackathon Begins</h3>
                 <p className="node-date">15th March, 2026</p>
-                <p className="node-desc">Non-stop coding, events, and building innovative projects.</p>
+                <p className="node-desc">Problem statements revealed! Begin coding, building, and solving.</p>
               </div>
             </div>
 
@@ -167,7 +216,7 @@ export default function HackathonsPage() {
       {/* ================= RULES (VERTICAL) ================= */}
       <section
         className="ignite-section fade"
-        ref={(el) => el && (sectionsRef.current[3] = el)}
+        ref={(el) => el && (sectionsRef.current[4] = el)}
       >
         <h2 className="section-title">Ignite Rules</h2>
         <div className="rules-vertical">
@@ -205,6 +254,7 @@ export default function HackathonsPage() {
       {/* ================= STYLES ================= */}
       <style jsx>{`
         .ignite-root {
+          position: relative;
           background-color: #05070d;
           background-image: 
             radial-gradient(circle at 50% 0%, rgba(11, 15, 26, 1) 0%, rgba(5, 7, 13, 1) 70%),
@@ -216,6 +266,23 @@ export default function HackathonsPage() {
           min-height: 100vh;
         }
 
+        /* NEW: Tech Grid Overlay for ultra-modern aesthetic */
+        .bg-grid {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+          background-size: 50px 50px;
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+          -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
         /* HERO SECTION */
         .ignite-hero {
           position: relative;
@@ -225,6 +292,7 @@ export default function HackathonsPage() {
           justify-content: center;
           text-align: center;
           padding: 40px 20px;
+          z-index: 1;
         }
 
         .hero-glow {
@@ -232,9 +300,9 @@ export default function HackathonsPage() {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(255,106,0,0.15) 0%, rgba(0,0,0,0) 70%);
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(255,106,0,0.12) 0%, rgba(0,229,255,0.05) 50%, rgba(0,0,0,0) 70%);
           z-index: 0;
           pointer-events: none;
         }
@@ -283,41 +351,45 @@ export default function HackathonsPage() {
         }
 
         .ignite-tagline {
-          font-size: 20px;
+          font-size: 22px;
           color: #00e5ff; 
-          font-weight: 500;
-          letter-spacing: 1px;
-          margin-bottom: 24px;
+          font-weight: 600;
+          letter-spacing: 1.5px;
+          margin-bottom: 32px;
+          text-transform: uppercase;
         }
         
         /* PRIZE POOL BADGE */
         .hero-prize-badge {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: rgba(255, 215, 0, 0.1);
+          gap: 10px;
+          background: rgba(255, 215, 0, 0.08);
           border: 1px solid rgba(255, 215, 0, 0.4);
           color: #ffd700;
-          padding: 8px 20px;
-          border-radius: 30px;
-          font-size: 16px;
+          padding: 10px 24px;
+          border-radius: 40px;
+          font-size: 18px;
           font-weight: 700;
-          box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
           animation: floatPrize 3s ease-in-out infinite;
+          backdrop-filter: blur(5px);
         }
         
         .prize-icon {
-          font-size: 18px;
+          font-size: 20px;
         }
         
         @keyframes floatPrize {
           0% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3); }
+          50% { transform: translateY(-5px); box-shadow: 0 5px 25px rgba(255, 215, 0, 0.25); }
           100% { transform: translateY(0px); }
         }
 
         /* GLOBAL SECTION STYLES */
         .ignite-section {
+          position: relative;
+          z-index: 1;
           max-width: 1000px;
           margin: 0 auto;
           padding: 70px 24px;
@@ -325,7 +397,7 @@ export default function HackathonsPage() {
 
         .section-title {
           text-align: center;
-          font-size: 32px;
+          font-size: 34px;
           font-weight: 800;
           margin-bottom: 12px;
           color: #ffffff;
@@ -335,8 +407,8 @@ export default function HackathonsPage() {
         .section-subtitle {
           text-align: center;
           color: #9aa3ff;
-          margin-bottom: 32px;
-          font-size: 16px;
+          margin-bottom: 40px;
+          font-size: 17px;
         }
 
         /* ANIMATIONS */
@@ -359,20 +431,21 @@ export default function HackathonsPage() {
         }
 
         .premium-card {
-          background: rgba(255, 255, 255, 0.015);
+          background: rgba(255, 255, 255, 0.02);
           border: 1px solid rgba(255, 255, 255, 0.05);
           border-radius: 20px;
           padding: 32px;
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
           box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .cards-grid .premium-card:hover {
           transform: translateY(-8px);
-          border-color: rgba(0, 229, 255, 0.3);
-          background: rgba(255, 255, 255, 0.03);
-          box-shadow: 0 20px 40px -10px rgba(0, 229, 255, 0.1);
+          border-color: rgba(0, 229, 255, 0.4);
+          background: rgba(255, 255, 255, 0.04);
+          box-shadow: 0 20px 40px -10px rgba(0, 229, 255, 0.15);
         }
 
         .card-icon {
@@ -395,9 +468,91 @@ export default function HackathonsPage() {
         }
 
         .premium-card p {
-          color: #9aa3ff;
+          color: #a5aeea;
           font-size: 15px;
           line-height: 1.7;
+        }
+
+        /* THEMES SECTION */
+        .classified-badge {
+          display: table;
+          margin: 0 auto 40px auto;
+          background: rgba(0, 229, 255, 0.08);
+          border: 1px solid rgba(0, 229, 255, 0.3);
+          color: #00e5ff;
+          padding: 12px 24px;
+          border-radius: 12px;
+          font-size: 15px;
+          text-align: center;
+          backdrop-filter: blur(8px);
+        }
+
+        .classified-badge strong {
+          color: #ffffff;
+        }
+
+        .themes-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+          gap: 20px;
+        }
+
+        .theme-card {
+          background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.4) 100%);
+          border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 16px;
+          padding: 28px 24px;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .theme-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; height: 3px;
+          background: linear-gradient(90deg, #ff6a00, #ffb347);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .theme-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(255, 106, 0, 0.3);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .theme-card:hover::before {
+          opacity: 1;
+        }
+
+        .theme-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .theme-emoji {
+          font-size: 28px;
+          background: rgba(255, 255, 255, 0.05);
+          width: 48px; height: 48px;
+          display: flex; align-items: center; justify-content: center;
+          border-radius: 12px;
+        }
+
+        .theme-card h3 {
+          font-size: 18px;
+          font-weight: 700;
+          color: #fff;
+          margin: 0;
+        }
+
+        .theme-card p {
+          color: #a5aeea;
+          font-size: 14px;
+          line-height: 1.6;
+          margin: 0;
         }
 
         /* REGISTRATION & PAYMENT DASHBOARD */
