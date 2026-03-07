@@ -45,7 +45,7 @@ export default function HackathonPage() {
           
           <div className="hero-prize-badge">
             <span className="prize-icon">🏆</span>
-            Prize Pool: ₹50,000+
+            IGNITE the coder within you
           </div>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function HackathonPage() {
           <div className="premium-card">
             <div className="card-icon">🏆</div>
             <h3>Win Big Prizes</h3>
-            <p>Compete for a total prize pool of ₹50,000, including cash, exclusive goodies, and premium swag.</p>
+            <p>Compete for a prizes, including cash, exclusive goodies, and premium swag.</p>
           </div>
           <div className="premium-card">
             <div className="card-icon">💡</div>
@@ -147,7 +147,7 @@ export default function HackathonPage() {
             </div>
             <div className="detail-item">
               <span className="cyan-label">Entry Fee</span>
-              <span className="detail-value">₹200 per person</span>
+              <span className="detail-value">₹200 per *Team*</span>
             </div>
 
             <div className="reg-actions">
