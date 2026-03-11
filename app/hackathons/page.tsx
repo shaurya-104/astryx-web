@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const REGISTERED = 14;
+const REGISTERED = 17;
 const TOTAL = 25;
 
 function polarToCartesian(cx: number, cy: number, r: number, deg: number) {
@@ -339,7 +339,6 @@ export default function HackathonPage() {
       </footer>
 
       <style jsx>{`
-        /* ─────────────────── CSS RESET & VARS ─────────────────── */
         *, *::before, *::after {
           box-sizing: border-box;
           -webkit-tap-highlight-color: transparent;
@@ -356,7 +355,6 @@ export default function HackathonPage() {
           padding-top: 80px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
           min-height: 100vh;
-          /* iOS safe area */
           padding-left: env(safe-area-inset-left);
           padding-right: env(safe-area-inset-right);
           -webkit-font-smoothing: antialiased;
@@ -374,7 +372,6 @@ export default function HackathonPage() {
           pointer-events: none; z-index: 0;
         }
 
-        /* ─────────────────── HERO ─────────────────── */
         .ignite-hero {
           position: relative;
           min-height: 65vh;
@@ -431,7 +428,6 @@ export default function HackathonPage() {
           50% { transform:translateY(-5px); box-shadow:0 5px 25px rgba(255,215,0,0.25); }
         }
 
-        /* ─────────────────── SECTIONS ─────────────────── */
         .ignite-section {
           position: relative; z-index: 1;
           width: 100%; max-width: 1000px;
@@ -446,7 +442,6 @@ export default function HackathonPage() {
         .fade { opacity:0; transform:translateY(40px) scale(0.98); transition:all 0.8s cubic-bezier(0.25,1,0.5,1); }
         .fade.visible { opacity:1; transform:translateY(0) scale(1); }
 
-        /* ─────────────────── HUD CARD ─────────────────── */
         .slots-section { padding-top: 0; padding-bottom: 40px; }
 
         .hud-card {
@@ -458,7 +453,6 @@ export default function HackathonPage() {
           box-shadow: 0 0 0 1px rgba(255,106,0,0.06), 0 24px 70px -16px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.03);
         }
 
-        /* Corner brackets */
         .corner { position:absolute; width:16px; height:16px; border-color:#ff6a00; border-style:solid; z-index:10; pointer-events:none; }
         .corner.tl { top:-1px; left:-1px; border-width:2px 0 0 2px; border-radius:3px 0 0 0; }
         .corner.tr { top:-1px; right:-1px; border-width:2px 2px 0 0; border-radius:0 3px 0 0; }
@@ -471,7 +465,6 @@ export default function HackathonPage() {
           pointer-events:none; z-index:1; opacity:0.5;
         }
 
-        /* Top bar */
         .hud-topbar {
           position: relative; z-index: 2;
           display: flex; justify-content: space-between; align-items: center;
@@ -491,11 +484,9 @@ export default function HackathonPage() {
         }
         @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.15;} }
 
-        /* ─── HUD BODY — responsive grid ─── */
         .hud-body {
           position: relative; z-index: 2;
           display: grid;
-          /* 3 cols on wide screens */
           grid-template-columns: auto 1fr 1fr;
           grid-template-rows: auto;
           align-items: center;
@@ -503,19 +494,16 @@ export default function HackathonPage() {
           padding: clamp(24px,4vw,40px) clamp(20px,4vw,44px);
         }
 
-        /* Dividers between columns via right border */
         .arc-col  { border-right: 1px solid rgba(255,255,255,0.05); padding-right: clamp(20px,3vw,40px); }
         .counter-col { border-right: 1px solid rgba(255,255,255,0.05); padding: 0 clamp(20px,3vw,40px); }
         .slot-col { padding-left: clamp(20px,3vw,40px); }
 
-        /* ─── Arc gauge ─── */
         .arc-col { display:flex; align-items:center; justify-content:center; }
         .arc-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
         .arc-svg {
           width: clamp(120px, 16vw, 180px);
           height: clamp(120px, 16vw, 180px);
-          display: block;
-          overflow: visible;
+          display: block; overflow: visible;
         }
         .arc-center {
           position: absolute; top:50%; left:50%;
@@ -536,7 +524,6 @@ export default function HackathonPage() {
           font-family: 'Courier New', monospace; margin-top: 3px;
         }
 
-        /* ─── Counter ─── */
         .counter-col { text-align: center; }
         .counter-eyebrow {
           font-family: 'Courier New', monospace;
@@ -577,7 +564,6 @@ export default function HackathonPage() {
           100%{ transform:translate(0); filter:none; }
         }
 
-        /* ─── Slot grid ─── */
         .slot-col { display:flex; flex-direction:column; gap:12px; }
         .slot-grid-label {
           font-family:'Courier New',monospace; font-size:clamp(8px,1.5vw,10px);
@@ -616,7 +602,6 @@ export default function HackathonPage() {
         .legend-dot.on { background:linear-gradient(135deg,#ff6a00,#ffb347); }
         .legend-dot.off { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); }
 
-        /* Bottom bar */
         .hud-bottombar {
           position:relative; z-index:2;
           display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;
@@ -628,7 +613,6 @@ export default function HackathonPage() {
         .bottom-tag.warn { color:rgba(255,106,0,0.75); animation:warnFlash 2s ease-in-out infinite; }
         @keyframes warnFlash { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
 
-        /* ─────────────────── CARDS ─────────────────── */
         .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:clamp(16px,3vw,24px); }
         .premium-card {
           background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05);
@@ -642,7 +626,6 @@ export default function HackathonPage() {
         .premium-card h3 { font-size:clamp(18px,3vw,22px); margin-bottom:10px; font-weight:700; color:#fff; }
         .premium-card p { color:#a5aeea; font-size:clamp(13px,2.5vw,15px); line-height:1.7; margin:0; }
 
-        /* ─────────────────── THEMES ─────────────────── */
         .classified-badge {
           display:table; margin:0 auto 36px auto;
           background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.3);
@@ -667,7 +650,6 @@ export default function HackathonPage() {
         .theme-card h3 { font-size:clamp(15px,2.5vw,18px); font-weight:700; color:#fff; margin:0; }
         .theme-card p { color:#a5aeea; font-size:clamp(12px,2vw,14px); line-height:1.65; margin:0; }
 
-        /* ─────────────────── REG DASHBOARD ─────────────────── */
         .registration-dashboard { display:flex; gap:clamp(24px,4vw,40px); align-items:flex-start; flex-wrap:wrap; border-top:2px solid rgba(0,229,255,0.2); }
         .reg-details { flex:1; min-width:min(280px,100%); display:flex; flex-direction:column; gap:16px; }
         .reg-heading { font-size:clamp(18px,3.5vw,24px); color:#fff; margin:0 0 4px; }
@@ -695,7 +677,6 @@ export default function HackathonPage() {
         .upi-label { display:block; font-size:12px; color:#8a90ff; text-transform:uppercase; margin-bottom:4px; }
         .upi-id { font-size:clamp(12px,2.5vw,15px); color:#00e5ff; font-weight:600; word-break:break-all; }
 
-        /* ─────────────────── TIMELINE ─────────────────── */
         .timeline-container { padding:clamp(24px,4vw,40px); }
         .timeline-track { position:relative; padding-left:32px; }
         .timeline-track::before { content:''; position:absolute; left:4px; top:10px; bottom:10px; width:2px; background:linear-gradient(to bottom,#00e5ff,rgba(0,229,255,0.1)); border-radius:2px; }
@@ -710,7 +691,6 @@ export default function HackathonPage() {
         .node-desc { color:#8a90ff; margin-top:8px; font-size:clamp(13px,2.5vw,15px); }
         .node-date { color:#ffb347; margin-top:6px; font-weight:500; font-size:clamp(12px,2vw,14px); }
 
-        /* ─────────────────── RULES ─────────────────── */
         .rules-vertical { display:flex; flex-direction:column; gap:14px; max-width:700px; margin:0 auto; }
         .rule-row { display:flex; align-items:center; gap:18px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); padding:clamp(12px,2.5vw,16px) clamp(16px,3vw,24px); border-radius:16px; transition:transform 0.3s ease, border-color 0.3s, box-shadow 0.3s; }
         .rule-row:hover { background:rgba(255,255,255,0.04); transform:translateX(8px); border-color:rgba(255,106,0,0.3); box-shadow:-4px 0 0 0 #ff6a00; }
@@ -718,98 +698,48 @@ export default function HackathonPage() {
         .rule-text { color:#cfd3ff; font-size:clamp(13px,2.5vw,16px); }
         .rule-text strong { color:#fff; margin-right:6px; }
 
-        /* ─────────────────── FOOTER ─────────────────── */
         .ignite-footer { margin-top:60px; border-top:1px solid rgba(255,255,255,0.05); padding:clamp(28px,5vw,40px) 20px; background:rgba(0,0,0,0.2); padding-bottom:calc(clamp(28px,5vw,40px) + env(safe-area-inset-bottom)); }
         .footer-content { max-width:1000px; margin:0 auto; text-align:center; color:#8a90ff; font-size:clamp(13px,2.5vw,15px); font-weight:500; }
         .footer-copyright { margin-top:8px; font-size:12px; color:#4f5594; }
 
-        /* ─────────────────── RESPONSIVE ─────────────────── */
-
-        /* Tablet: 601–900px */
         @media (max-width: 900px) {
-          .hud-body {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-          }
-          .arc-col {
-            grid-column: 1; grid-row: 1;
-            border-right: 1px solid rgba(255,255,255,0.05);
-            border-bottom: none;
-            padding-bottom: 0;
-          }
-          .counter-col {
-            grid-column: 2; grid-row: 1;
-            border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-right: 0;
-            padding-bottom: clamp(20px,3vw,32px);
-          }
-          .slot-col {
-            grid-column: 1 / -1; grid-row: 2;
-            padding-left: 0;
-            padding-top: clamp(20px,3vw,32px);
-            border-right: none;
-          }
+          .hud-body { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+          .arc-col { grid-column: 1; grid-row: 1; border-right: 1px solid rgba(255,255,255,0.05); border-bottom: none; padding-bottom: 0; }
+          .counter-col { grid-column: 2; grid-row: 1; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-right: 0; padding-bottom: clamp(20px,3vw,32px); }
+          .slot-col { grid-column: 1 / -1; grid-row: 2; padding-left: 0; padding-top: clamp(20px,3vw,32px); border-right: none; }
           .hud-tag-hide { display:none; }
         }
 
-        /* Mobile: ≤600px */
         @media (max-width: 600px) {
           .ignite-root { padding-top: 60px; }
-
-          .hud-body {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-            padding: 20px 18px;
-            gap: 0;
-          }
-          .arc-col {
-            grid-column: 1; grid-row: 1;
-            border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-right: 0;
-            padding-bottom: 24px;
-          }
-          .counter-col {
-            grid-column: 1; grid-row: 2;
-            border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 24px 0;
-          }
-          .slot-col {
-            grid-column: 1; grid-row: 3;
-            padding-left: 0;
-            padding-top: 24px;
-          }
+          .hud-body { grid-template-columns: 1fr; grid-template-rows: auto; padding: 20px 18px; gap: 0; }
+          .arc-col { grid-column: 1; grid-row: 1; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-right: 0; padding-bottom: 24px; }
+          .counter-col { grid-column: 1; grid-row: 2; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 24px 0; }
+          .slot-col { grid-column: 1; grid-row: 3; padding-left: 0; padding-top: 24px; }
           .hud-tag-hide { display: none; }
           .hud-topbar, .hud-bottombar { flex-direction:column; align-items:flex-start; gap:4px; }
           .counter-main { font-size: clamp(52px,18vw,72px); }
           .arc-svg { width:140px; height:140px; }
           .slot-grid { grid-template-columns: repeat(5,1fr); gap:5px; }
-
           .registration-dashboard { flex-direction:column; }
           .reg-payment { width:100%; }
           .detail-item { flex-direction:column; align-items:flex-start; gap:2px; }
           .cyan-label { width:auto; }
-
           .rule-row { gap:14px; }
           .rule-row:hover { transform:none; }
         }
 
-        /* Very small phones: ≤360px */
         @media (max-width: 360px) {
           .ignite-title { font-size: 52px; }
           .counter-main { font-size: 48px; }
           .slot-grid { gap: 4px; }
         }
 
-        /* High-DPI / Retina */
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
           .hud-card { border-width: 0.5px; }
           .corner { border-width: 1.5px; }
         }
 
-        /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
           .fade { transition: opacity 0.4s ease; transform: none; }
           .fade.visible { transform: none; }
