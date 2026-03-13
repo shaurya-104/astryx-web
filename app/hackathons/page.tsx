@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const REGISTERED = 17;
+const REGISTERED = 23;
 const TOTAL = 25;
 
 function polarToCartesian(cx: number, cy: number, r: number, deg: number) {
