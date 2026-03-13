@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const REGISTERED = 23;
+const REGISTERED = 25;
 const TOTAL = 25;
 
 function polarToCartesian(cx: number, cy: number, r: number, deg: number) {
@@ -267,23 +267,7 @@ export default function HackathonPage() {
               </div>
             ))}
             <div className="reg-actions">
-              <p className="step-text"><strong>Step 2:</strong> Fill the form & upload screenshot</p>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeiiOMFIYDfAQvXJshzEELyW3QOdHmPGXNgIcsCRvgRaQ9R8Q/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-glow-cyan"
-              >Apply Now</a>
-            </div>
-          </div>
-          <div className="reg-payment">
-            <p className="step-text"><strong>Step 1:</strong> Scan to pay the fee</p>
-            <div className="qr-wrapper">
-              <img src="/payment/gpay-ignite.png.jpeg" alt="UPI Payment QR" className="qr-image" />
-            </div>
-            <div className="upi-details">
-              <span className="upi-label">UPI ID</span>
-              <span className="upi-id">samagrasaharia@okicici</span>
+              <div className="btn-closed">🔒 Registrations Closed</div>
             </div>
           </div>
         </div>
@@ -659,6 +643,14 @@ export default function HackathonPage() {
         .reg-actions { margin-top:12px; }
         .step-text { color:#ffb347; font-size:clamp(12px,2.5vw,14px); margin-bottom:12px; }
         .step-text strong { color:#ff6a00; text-transform:uppercase; }
+        .btn-closed {
+          padding:14px 32px; border-radius:50px;
+          background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.35);
+          border:1px solid rgba(255,255,255,0.1);
+          font-weight:700; font-size:clamp(14px,2.5vw,16px);
+          display:inline-flex; align-items:center; justify-content:center; gap:8px;
+          width:100%; max-width:300px; cursor:not-allowed; letter-spacing:1px;
+        }
         .btn-glow-cyan {
           padding:14px 32px; border-radius:50px; background:#00e5ff; color:#000;
           font-weight:700; font-size:clamp(14px,2.5vw,16px); text-decoration:none;
